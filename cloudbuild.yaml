@@ -1,0 +1,20 @@
+steps:
+- name: 'gcr.io/cloud-builders/git'
+  args: ['clone', 'https://github.com/apurvashingne/myrepooo.git']
+  
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build','-t','gcr.io/${_PROJECT}/${_CONTAINERNAME}:${_VERSION}','.']
+  
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push','gcr.io/${_PROJECT}/${_CONTAINERNAME}:${_VERSION}']
+
+substitutions:
+    _PROJECT: searce-playground-v1
+    _ZONE: asia-southeast1-a
+    
+    _DEPLOYMENTNAME: webapp2
+    _CONTAINERNAME: apurvapche2  
+    _REPO_NAME: cloudbuild
+    
+    _VERSION: latest
+
