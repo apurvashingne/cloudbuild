@@ -21,7 +21,8 @@ steps:
 substitutions:
     _PROJECT: searce-playground-v1
     _ZONE: asia-southeast1-a
-    
+    _GKE_CLUSTER: apurv-cluster-1
+
     _DEPLOYMENTNAME: apache3
     _CONTAINERNAME: apurvapche2  
     _REPO_NAME: cloudbuild
