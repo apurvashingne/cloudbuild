@@ -8,13 +8,18 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push','gcr.io/${_PROJECT}/${_CONTAINERNAME}:${_VERSION}']
 
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['apply', '-f', 'apur/deployment.yaml']
+  env:
+   - 'CLOUDSDK_COMPUTE_ZONE=${_ZONE}'
+   - 'CLOUDSDK_CONTAINER_CLUSTER=${_GKE_CLUSTER}'
 
 substitutions:
     _PROJECT: searce-playground-v1
     _ZONE: asia-southeast1-a
     _GKE_CLUSTER: apurv-cluster-1
 
-    _DEPLOYMENTNAME: apache3
+    _DEPLOYMENTNAME: httpdd3
     _CONTAINERNAME: apurvapche2  
     _REPO_NAME: cloudbuild
     
