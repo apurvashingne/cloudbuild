@@ -2,23 +2,23 @@ steps:
 - name: 'gcr.io/cloud-builders/git'
   args: ['clone', 'https://github.com/apurvashingne/cloudbuild.git']
 
-#step 1
-- name: 'gcr.io/cloud-builders/docker' 
-  entrypoint: 'bash'
-  args: [
-   '-c', 
-   'docker pull gcr.io/searce-playground-v1/webapache:latest || exit 0'
-  ]
 #step 2
 - name: gcr.io/cloud-builders/docker
   args: [
    'build', 
    '-t', 
-   'gcr.io/searce-playground-v1/webapache:latest',
+   'gcr.io/searce-playground-v1/apurvapche2:latest',
    '-t', 
-   'gcr.io/searce-playground-v1/webapache:latest',
+   'gcr.io/searce-playground-v1/apurvapche2:latest',
    '.'
   ]
+- name: 'gcr.io/cloud-builders/docker' 
+  entrypoint: 'bash'
+  args: [
+   '-c', 
+   'docker push gcr.io/searce-playground-v1/apurvapche2:latest || exit 0'
+  ]
+  
 #step 3
 - name: 'gcr.io/cloud-builders/kubectl'
   args: ['apply', '-f', 'k8s/']
