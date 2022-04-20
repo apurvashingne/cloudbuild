@@ -20,7 +20,7 @@ steps:
   ]
 #step 3
 - name: 'gcr.io/cloud-builders/kubectl'
-  args: ['apply', '-f', '/home/apurva_shingne/apur/k8s']
+  args: ['apply', '-f', '.']
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1-a'
   - 'CLOUDSDK_CONTAINER_CLUSTER=apurv-cluster-1'
