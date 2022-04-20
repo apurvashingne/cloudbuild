@@ -6,7 +6,7 @@ steps:
   args: 
       - '-c'
       - >
-       pwd
+       ls -al
   entrypoint: bash
 #step 1
 - name: 'gcr.io/cloud-builders/docker' 
