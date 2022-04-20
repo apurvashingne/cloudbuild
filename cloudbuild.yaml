@@ -7,16 +7,16 @@ steps:
   args: [
    'build', 
    '-t', 
-   'gcr.io/searce-playground-v1/apurvapche2:latest',
+   'gcr.io/searce-playground-v1/webapache:latest',
    '-t', 
-   'gcr.io/searce-playground-v1/apurvapche2:latest',
+   'gcr.io/searce-playground-v1/webapache:latest',
    '.'
   ]
 - name: 'gcr.io/cloud-builders/docker' 
   entrypoint: 'bash'
   args: [
    '-c', 
-   'docker push gcr.io/searce-playground-v1/apurvapche2:latest || exit 0'
+   'docker push gcr.io/searce-playground-v1/webapache:latest || exit 0'
   ]
   
 #step 3
