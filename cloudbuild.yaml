@@ -1,31 +1,38 @@
 steps:
 - name: 'gcr.io/cloud-builders/git'
   args: ['clone', 'https://github.com/apurvashingne/cloudbuild.git']
-  
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build','-t','gcr.io/${_PROJECT}/${_CONTAINERNAME}:${_VERSION}','.']
-  
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push','gcr.io/${_PROJECT}/${_CONTAINERNAME}:${_VERSION}']
-
+#step 1
+- name: 'gcr.io/cloud-builders/docker' 
+  entrypoint: 'bash'
+  args: [
+   '-c', 
+   'docker pull gcr.io/searce-playground-v1/apurvapche2:latest || exit 0'
+  ]
+#step 2
+- name: gcr.io/cloud-builders/docker
+  args: [
+   'build', 
+   '-t', 
+   'gcr.io/searce-playground-v1/apurvapche2:latest',
+   '-t', 
+   'gcr.io/searce-playground-v1/apurvapche2:latest',
+   '.'
+  ]
+#step 3
 - name: 'gcr.io/cloud-builders/kubectl'
-  args:
-  - 'set'
-  - 'image'
-  - 'deployment/${_DEPLOYMENTNAME}'
-  - '${_CONTAINERNAME}=gcr.io/${_PROJECT}/${_CONTAINERNAME}:${_VERSION}'
+  args: ['apply', '-f', '.']
   env:
-  - 'CLOUDSDK_COMPUTE_ZONE=${_ZONE}'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=${_GKE_CLUSTER}'
-
-substitutions:
-    _PROJECT: searce-playground-v1
-    _ZONE: asia-southeast1-a
-    _GKE_CLUSTER: apurv-cluster-1
-
-    _DEPLOYMENTNAME: httpdd3
-    _CONTAINERNAME: apurvapche2  
-    _REPO_NAME: cloudbuild
-    
-    _VERSION: latest
-
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1-a'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=apurv-cluster-1'
+#step 4
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: [
+   'set', 
+   'image', 
+   'deployment', 
+   'apurvapche2', 
+   'apurvapche2=gcr.io/searce-playground-v1/apurvapche2:latest'
+  ]
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1-a'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=apurv-cluster-1'
