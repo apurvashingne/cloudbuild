@@ -1,13 +1,7 @@
 steps:
 - name: 'gcr.io/cloud-builders/git'
   args: ['clone', 'https://github.com/apurvashingne/cloudbuild.git']
-
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  args: 
-      - '-c'
-      - >
-       ls -al
-  entrypoint: bash
+  
 #step 1
 - name: 'gcr.io/cloud-builders/docker' 
   entrypoint: 'bash'
