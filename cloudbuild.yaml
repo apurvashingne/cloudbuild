@@ -7,33 +7,21 @@ steps:
   entrypoint: 'bash'
   args: [
    '-c', 
-   'docker pull gcr.io/searce-playground-v1/apurvapche2:latest || exit 0'
+   'docker pull gcr.io/searce-playground-v1/webapache:latest || exit 0'
   ]
 #step 2
 - name: gcr.io/cloud-builders/docker
   args: [
    'build', 
    '-t', 
-   'gcr.io/searce-playground-v1/apurvapche2:latest',
+   'gcr.io/searce-playground-v1/webapache:latest',
    '-t', 
-   'gcr.io/searce-playground-v1/apurvapche2:latest',
+   'gcr.io/searce-playground-v1/webapache:latest',
    '.'
   ]
 #step 3
 - name: 'gcr.io/cloud-builders/kubectl'
   args: ['apply', '-f', 'k8s/']
-  env:
-  - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1-a'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=apurv-cluster-1'
-#step 4
-- name: 'gcr.io/cloud-builders/kubectl'
-  args: [
-   'set', 
-   'image', 
-   'deployment', 
-   'apurvapche2', 
-    apurvapche2=gcr.io/searce-playground-v1/apurvapche2:latest'
-  ]
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1-a'
   - 'CLOUDSDK_CONTAINER_CLUSTER=apurv-cluster-1'
