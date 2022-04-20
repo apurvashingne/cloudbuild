@@ -2,17 +2,17 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    run: httpdd3
-  name: httpdd3
+    run: apurvapche2
+  name: apurvapche2
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      run: httpdd3
+      run: apurvapche2
   template:
     metadata:
       labels:
-        run: httpdd3
+        run: apurvapche2
     spec:
       containers:
       - image: gcr.io/searce-playground-v1/apurvapche2:latest
