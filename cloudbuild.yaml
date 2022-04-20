@@ -9,6 +9,12 @@ steps:
   args: ['push','gcr.io/${_PROJECT}/${_CONTAINERNAME}:${_VERSION}']
 
 - name: 'gcr.io/cloud-builders/kubectl'
+  args: ['apply', '-f', 'k8s/']
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1-a'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=apurv-cluster-1'
+
+- name: 'gcr.io/cloud-builders/kubectl'
   args:
   - 'set'
   - 'image'
@@ -28,5 +34,8 @@ substitutions:
     _REPO_NAME: cloudbuild
     
     _VERSION: latest
+
 options:
     substitution_option: 'ALLOW_LOOSE'
+
+
