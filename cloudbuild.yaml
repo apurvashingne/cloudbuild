@@ -31,8 +31,8 @@ steps:
    'set', 
    'image', 
    'deployment', 
-   'httpdd3', 
-    httpdd3=gcr.io/searce-playground-v1/apurvapche2:latest'
+   'apurvapche2', 
+    apurvapche2=gcr.io/searce-playground-v1/apurvapche2:latest'
   ]
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1-a'
