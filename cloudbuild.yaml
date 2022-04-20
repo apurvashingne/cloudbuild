@@ -33,7 +33,7 @@ substitutions:
     _CONTAINERNAME: webapache
     _REPO_NAME: cloudbuild
     
-    _VERSION: latest
+    _VERSION: latest1
 
 options:
     substitution_option: 'ALLOW_LOOSE'
