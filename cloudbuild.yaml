@@ -31,7 +31,7 @@ steps:
    'set', 
    'image', 
    'deployment', 
-   'apurvapche2', 
+   'httpdd3', 
    'apurvapche2=gcr.io/searce-playground-v1/apurvapche2:latest'
   ]
   env:
