@@ -37,7 +37,3 @@ steps:
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1-a'
   - 'CLOUDSDK_CONTAINER_CLUSTER=apurv-cluster-1'
-  images: [
-   'gcr.io/searce-playground-v1/<app-name>:$TAG_NAME',
-   'gcr.io/searce-playground-v1/<app-name>:latest'
-  ]
