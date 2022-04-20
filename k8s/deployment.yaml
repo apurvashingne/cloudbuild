@@ -15,7 +15,7 @@ spec:
         run: httpdd3
     spec:
       containers:
-       - image: gcr.io/searce-playground-v1/webapache:latest
+       - image: gcr.io/searce-playground-v1/webapache:latest1
          name: webapache
          ports:
          - containerPort: 80
