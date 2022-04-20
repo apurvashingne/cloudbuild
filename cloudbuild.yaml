@@ -24,7 +24,7 @@ substitutions:
     _GKE_CLUSTER: apurv-cluster-1
 
     _DEPLOYMENTNAME: httpdd3
-    _CONTAINERNAME: apurvapche2  
+    _CONTAINERNAME: apurvapche2
     _REPO_NAME: cloudbuild
     
     _VERSION: latest
