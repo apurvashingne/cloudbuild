@@ -1,9 +1,24 @@
 steps:
-- name: 'gcr.io/cloud-builders/git'
-  args: ['clone', 'https://github.com/apurvashingne/cloudbuild.git']
-  
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build','-t','gcr.io/searce-playground-v1/webapache:latest','.']
-  
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push','gcr.io/searce-playground-v1/webapache:latest']
+- name: 'gcr.io/cloud-builders/docker' 
+  entrypoint: 'bash'
+  args: [
+   '-c', 
+   'docker pull gcr.io/searce-playground-v1/webapache:latest || exit 0'
+  ]
+#step 2
+- name: gcr.io/cloud-builders/docker
+  args: [
+   'build', 
+   '-t', 
+   'gcr.io/searce-playground-v1/webapache:latest',
+   '-t', 
+   'gcr.io/searce-playground-v1/webapache:latest',
+   '.'
+  ]
+
+#step 3
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['apply', '-f', 'k8s/']
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1-a'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=apurv-cluster-1'
