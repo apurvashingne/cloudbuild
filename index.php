@@ -1,5 +1,5 @@
 <?php
- echo "hello world welcome to my dom of king apurvaaa ........";
+ echo "hello world welcome to my dom of king apurvaaa .........";
 ?>
 
 
